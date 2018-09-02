@@ -60,6 +60,8 @@ test {
     suites 'Test1.xml'
     }
  }   
+  
+  
    sourceSets{
    
      test.java.srcDir 'src/main'
