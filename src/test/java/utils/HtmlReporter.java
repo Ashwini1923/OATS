@@ -13,7 +13,7 @@ public class HtmlReporter {
 	public static ExtentTest test;
 	public static String testCaseName, testCaseDescription, author, category;
 	
-	@BeforeSuite(groups = "common") // One time execution 
+	//@BeforeSuite(groups = "common") // One time execution 
 	public void startResult() {
 		ExtentHtmlReporter html = new ExtentHtmlReporter
 				("./reports/result.html");
@@ -21,7 +21,7 @@ public class HtmlReporter {
 		extent = new ExtentReports();
 		extent.attachReporter(html);
 	}
-	@BeforeMethod(groups = "common") 
+	//@BeforeMethod(groups = "common") 
 	public void startTestCase() {
 		test = extent
 				.createTest(testCaseName, testCaseDescription);
@@ -37,7 +37,7 @@ public class HtmlReporter {
 		}
 	}
 	
-	@AfterSuite(groups = "common")
+	//@AfterSuite(groups = "common")
 	public void stopResult(){		
 		extent.flush();
 	}

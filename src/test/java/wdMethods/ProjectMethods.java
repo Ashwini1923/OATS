@@ -11,18 +11,18 @@ import utils.DataInputProvider;
 public class ProjectMethods extends SeMethods{
 
 	public String dataSheetName;
-	@Parameters({"url","uname","pwd"})
-	@BeforeMethod
-	public void login(String url, String userName, String passWord) {
-		startApp("chrome", url);
-		WebElement eleUserName = locateElement("id", "username");
+	//@Parameters({"url","uname","pwd"})
+	//@BeforeMethod
+	public void login() {
+		startApp("chrome", "");
+		/*WebElement eleUserName = locateElement("id", "username");
 		type(eleUserName, userName);
 		WebElement elePassword = locateElement("id","password");
 		type(elePassword, passWord);
 		WebElement eleLogin = locateElement("class","decorativeSubmit");
 		click(eleLogin);
 		WebElement eleCRM = locateElement("linktext","CRM/SFA");
-		click(eleCRM);
+		click(eleCRM);*/
 	}
 	
 	@AfterMethod(groups="common")

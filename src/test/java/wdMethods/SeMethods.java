@@ -27,7 +27,7 @@ import utils.HtmlReporter;
 public class SeMethods extends HtmlReporter implements WdMethods{
 	public int i = 1;
 	public static RemoteWebDriver driver;
-	public void startApp(String browser, String url) {
+	public  void startApp(String browser, String url) {
 		try {
 			if(browser.equalsIgnoreCase("chrome")){
 				System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -39,9 +39,9 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			driver.get(url);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			reportStep("The browser: "+browser+" launched successfully", "pass");
+			////reportStep("The browser: "+browser+" launched successfully", "pass");
 		} catch (WebDriverException e) {			
-			reportStep("The browser: "+browser+" could not be launched", "fail");
+			////reportStep("The browser: "+browser+" could not be launched", "fail");
 		}
 	}
 
@@ -58,9 +58,9 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			case "cssSelect" : return driver.findElementByCssSelector(locValue);
 			}
 		} catch (NoSuchElementException e) {
-			reportStep("The element with locator "+locator+" not found.","fail");
+			////reportStep("The element with locator "+locator+" not found.","fail");
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while finding "+locator+" with the value "+locValue, "fail");
+			////reportStep("Unknown exception occured while finding "+locator+" with the value "+locValue, "fail");
 		}
 		return null;
 	}
@@ -73,11 +73,11 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {
 			ele.clear();
 			ele.sendKeys(data);
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "pass");
+			////reportStep("The data: "+data+" entered successfully in the field :"+ele, "pass");
 		} catch (InvalidElementStateException e) {
-			reportStep("The data: "+data+" could not be entered in the field :"+ele,"fail");
+			//reportStep("The data: "+data+" could not be entered in the field :"+ele,"fail");
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "fail");
+			////reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "fail");
 		}
 		finally {
 			takeSnap();
@@ -89,11 +89,11 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {	
 			text = ele.getText();
 			ele.click();			
-			reportStep("The element :"+text+"  is clicked.", "pass");
+			//reportStep("The element :"+text+"  is clicked.", "pass");
 		} catch (InvalidElementStateException e) {
-			reportStep("The element: "+text+" could not be clicked", "fail");
+			//reportStep("The element: "+text+" could not be clicked", "fail");
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while clicking in the field :","fail");
+			//reportStep("Unknown exception occured while clicking in the field :","fail");
 		} 
 	}
 
@@ -103,11 +103,11 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {			
 			text = ele.getText();
 			ele.click();
-			reportStep("The element "+text+" is clicked", "pass");
+			//reportStep("The element "+text+" is clicked", "pass");
 		} catch (InvalidElementStateException e) {
-			reportStep("The element: "+text+" could not be clicked", "fail");
+			//reportStep("The element: "+text+" could not be clicked", "fail");
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while clicking in the field :", "fail");
+			//reportStep("Unknown exception occured while clicking in the field :", "fail");
 		} 
 	}
 
@@ -116,7 +116,7 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {
 			bReturn = ele.getText();
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "fail");
+			//reportStep("The element: "+ele+" could not be found.", "fail");
 		}
 		return bReturn;
 	}
@@ -126,7 +126,7 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {
 			bReturn =  driver.getTitle();
 		} catch (WebDriverException e) {
-			reportStep("Unknown Exception Occured While fetching Title", "fail");
+			//reportStep("Unknown Exception Occured While fetching Title", "fail");
 		} 
 		return bReturn;
 	}
@@ -136,7 +136,7 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		try {
 			bReturn=  ele.getAttribute(attribute);
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "fail");
+			//reportStep("The element: "+ele+" could not be found.", "fail");
 		} 
 		return bReturn;
 	}
@@ -144,18 +144,18 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 	public void selectDropDownUsingText(WebElement ele, String value) {
 		try {
 			new Select(ele).selectByVisibleText(value);
-			reportStep("The dropdown is selected with text "+value,"pass");
+			//reportStep("The dropdown is selected with text "+value,"pass");
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "fail");
+			//reportStep("The element: "+ele+" could not be found.", "fail");
 		}
 	}
 
 	public void selectDropDownUsingIndex(WebElement ele, int index) {
 		try {
 			new Select(ele).selectByIndex(index);
-			reportStep("The dropdown is selected with index "+index,"pass");
+			//reportStep("The dropdown is selected with index "+index,"pass");
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "fail");
+			//reportStep("The element: "+ele+" could not be found.", "fail");
 		} 
 	}
 
@@ -163,13 +163,13 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 		boolean bReturn =false;
 		try {
 			if(getTitle().equals(title)) {
-				reportStep("The title of the page matches with the value :"+title,"pass");
+				//reportStep("The title of the page matches with the value :"+title,"pass");
 				bReturn= true;
 			}else {
-				reportStep("The title of the page:"+driver.getTitle()+" did not match with the value :"+title, "fail");
+				//reportStep("The title of the page:"+driver.getTitle()+" did not match with the value :"+title, "fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the title", "fail");
+			//reportStep("Unknown exception occured while verifying the title", "fail");
 		} 
 		return bReturn;
 	}
@@ -177,12 +177,12 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 	public void verifyExactText(WebElement ele, String expectedText) {
 		try {
 			if(getText(ele).equals(expectedText)) {
-				reportStep("The text: "+getText(ele)+" matches with the value :"+expectedText,"pass");
+				//reportStep("The text: "+getText(ele)+" matches with the value :"+expectedText,"pass");
 			}else {
-				reportStep("The text "+getText(ele)+" doesn't matches the actual "+expectedText,"fail");
+				//reportStep("The text "+getText(ele)+" doesn't matches the actual "+expectedText,"fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Text", "fail");
+			//reportStep("Unknown exception occured while verifying the Text", "fail");
 		} 
 
 	}
@@ -190,24 +190,24 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
 			if(getText(ele).contains(expectedText)) {
-				reportStep("The expected text contains the actual "+expectedText,"PASS");
+				//reportStep("The expected text contains the actual "+expectedText,"PASS");
 			}else {
-				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");
+				//reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Text", "FAIL");
+			//reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		} 
 	}
 
 	public void verifyExactAttribute(WebElement ele, String attribute, String value) {
 		try {
 			if(getAttribute(ele, attribute).equals(value)) {
-				reportStep("The expected attribute :"+attribute+" value matches the actual "+value,"pass");
+				//reportStep("The expected attribute :"+attribute+" value matches the actual "+value,"pass");
 			}else {
-				reportStep("The expected attribute :"+attribute+" value does not matches the actual "+value,"fail");
+				//reportStep("The expected attribute :"+attribute+" value does not matches the actual "+value,"fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Attribute Text", "fail");
+			//reportStep("Unknown exception occured while verifying the Attribute Text", "fail");
 		} 
 
 	}
@@ -215,36 +215,36 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 	public void verifyPartialAttribute(WebElement ele, String attribute, String value) {
 		try {
 			if(getAttribute(ele, attribute).contains(value)) {
-				reportStep("The expected attribute :"+attribute+" value contains the actual "+value,"pass");
+				//reportStep("The expected attribute :"+attribute+" value contains the actual "+value,"pass");
 			}else {
-				reportStep("The expected attribute :"+attribute+" value does not contains the actual "+value,"fail");
+				//reportStep("The expected attribute :"+attribute+" value does not contains the actual "+value,"fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Attribute Text", "fail");
+			//reportStep("Unknown exception occured while verifying the Attribute Text", "fail");
 		}
 	}
 
 	public void verifySelected(WebElement ele) {
 		try {
 			if(ele.isSelected()) {
-				reportStep("The element "+ele+" is selected","pass");
+				//reportStep("The element "+ele+" is selected","pass");
 			} else {
-				reportStep("The element "+ele+" is not selected","fail");
+				//reportStep("The element "+ele+" is not selected","fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		}
 	}
 
 	public void verifyDisplayed(WebElement ele) {
 		try {
 			if(ele.isDisplayed()) {
-				reportStep("The element "+ele+" is visible","pass");
+				//reportStep("The element "+ele+" is visible","pass");
 			} else {
-				reportStep("The element "+ele+" is not visible","fail");
+				//reportStep("The element "+ele+" is not visible","fail");
 			}
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "f");
+			//reportStep("WebDriverException : "+e.getMessage(), "f");
 		} 
 	}
 
@@ -255,20 +255,20 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			allHandles.addAll(allWindowHandles);
 			driver.switchTo().window(allHandles.get(index));
 		} catch (NoSuchWindowException e) {
-			reportStep("The driver could not move to the given window by index "+index,"pass");
+			//reportStep("The driver could not move to the given window by index "+index,"pass");
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		}
 	}
 
 	public void switchToFrame(WebElement ele) {
 		try {
 			driver.switchTo().frame(ele);
-			reportStep("switch In to the Frame "+ele,"pass");
+			//reportStep("switch In to the Frame "+ele,"pass");
 		} catch (NoSuchFrameException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		} 
 	}
 
@@ -278,11 +278,11 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			Alert alert = driver.switchTo().alert();
 			text = alert.getText();
 			alert.accept();
-			reportStep("The alert "+text+" is accepted.","pass");
+			//reportStep("The alert "+text+" is accepted.","pass");
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","fail");
+			//reportStep("There is no alert present.","fail");
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		}  
 	}
 
@@ -292,11 +292,11 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			Alert alert = driver.switchTo().alert();
 			text = alert.getText();
 			alert.dismiss();
-			reportStep("The alert "+text+" is dismissed.","pass");
+			//reportStep("The alert "+text+" is dismissed.","pass");
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","fail");
+			//reportStep("There is no alert present.","fail");
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		} 
 	}
 
@@ -306,9 +306,9 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 			Alert alert = driver.switchTo().alert();
 			text = alert.getText();
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","fail");
+			//reportStep("There is no alert present.","fail");
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "fail");
+			//reportStep("WebDriverException : "+e.getMessage(), "fail");
 		} 
 		return text;
 	}
@@ -327,18 +327,18 @@ public class SeMethods extends HtmlReporter implements WdMethods{
 	public void closeBrowser() {
 		try {
 			driver.close();
-			reportStep("The browser is closed","pass");
+			//reportStep("The browser is closed","pass");
 		} catch (Exception e) {
-			reportStep("The browser could not be closed","fail");
+			//reportStep("The browser could not be closed","fail");
 		}
 	}
 
 	public void closeAllBrowsers() {
 		try {
 			driver.quit();
-			reportStep("The opened browsers are closed","pass");
+			//reportStep("The opened browsers are closed","pass");
 		} catch (Exception e) {
-			reportStep("Unexpected error occured in Browser","fail");
+			//reportStep("Unexpected error occured in Browser","fail");
 		}
 	}
 

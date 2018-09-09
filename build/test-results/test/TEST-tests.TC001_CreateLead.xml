@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.TC001_CreateLead" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-09-02T04:03:12" hostname="DESKTOP-8V9ACPV" time="6.285">
+  <properties/>
+  <testcase name="createLead[0](Qeagle, Babu, M, babu@testleaf.com)" classname="tests.TC001_CreateLead" time="6.285"/>
+  <system-out><![CDATA[1
+4
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab) on port 32868
+Only local connections are allowed.
+Sep 02, 2018 9:33:03 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+]]></system-err>
+</testsuite>
