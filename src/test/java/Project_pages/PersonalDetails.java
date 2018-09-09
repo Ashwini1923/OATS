@@ -11,14 +11,15 @@ public class PersonalDetails extends SeMethods {
 		String data = "Tara";
 		driver.findElementByXPath("//input[@name = 'firstName']").sendKeys(data);
 		
-		driver.findElementByXPath("//span[@class ='btn-space']//a").click();
-		
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		driver.findElementByXPath("//span[@class ='btn-space']//a").click();
+		
 		
 		return new SchemeDetails();
 	}

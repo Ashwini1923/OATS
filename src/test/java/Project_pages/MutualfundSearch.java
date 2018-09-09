@@ -16,7 +16,7 @@ public class MutualfundSearch extends SeMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+				
 		return new AgeDetails();
 		
 	}
