@@ -55,31 +55,12 @@ dependencies {
 }
 
 
-test {
-    useTestNG() {
-    suites 'Test1.xml'
-    }
-<<<<<<< HEAD
- }   
-  
-  
-   sourceSets{
-=======
-   } 
-  // sourceSets{
->>>>>>> branch 'master' of https://github.com/Ashwini1923/OATS.git
-   
-<<<<<<< HEAD
-     test.java.srcDir 'src/main'
-       }
-=======
-    //   test.java.srcDir 'src/main'
-      // }
->>>>>>> branch 'master' of https://github.com/Ashwini1923/OATS.git
-     
-
-
-
+test{
+useTestNG()
+{
+suites 'bankbazaar.xml'
+}
+}
 
 
 
