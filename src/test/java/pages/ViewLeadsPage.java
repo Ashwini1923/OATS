@@ -12,7 +12,7 @@ public class ViewLeadsPage extends ProjectMethods {
 		click(eleLink7);
 		
 		
-		return new EditLeadsPage();
+		//return new EditLeadsPage();
 		
 		
 		
